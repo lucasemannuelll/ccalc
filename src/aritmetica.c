@@ -17,11 +17,13 @@ int calcular(double valor_a, double valor_b, char operador, double *resultado)
             return 0;
         
         case '/':
-            if (valor_b == 0) return 1; // Divisão por zero
+            // Verifica divisão por zero antes de calcular
+            if (valor_b == 0) return 1;
             *resultado = valor_a / valor_b;
             return 0;
 
         default:
-            return 2; // Operador inválido
+            // Operador não reconhecido
+            return 2;
     }
 }
