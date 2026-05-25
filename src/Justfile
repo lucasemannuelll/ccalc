@@ -1,0 +1,12 @@
+cc := clang
+cflags := "-Wall -Wextra -pedantic -std=c17 -pedantic -g"
+source_files := "main.c input.c arithmetic.c"
+target := ccalc
+
+default: build
+
+build:
+    {{cc}} {{cflags}} -o {{target}} {{source_files}}
+
+clean:
+    rm -f {{target}}
