@@ -1,35 +1,35 @@
-#include "input.h"
+#include "entrada.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-#define MAX_LINE 256
+#define MAX_LINHA 256
 
-int read_input(double *a, double *b, char *op)
+int ler_entrada(double *valor_a, double *valor_b, char *operador)
 {
-    char line[MAX_LINE];
-    int pos = 0;
+    char linha[MAX_LINHA];
+    int posicao = 0;
 
-    if (fgets(line, MAX_LINE, stdin) == NULL) 
+    if (fgets(linha, MAX_LINHA, stdin) == NULL) 
     {
-        fprintf(stderr, "Error: failed to read input\n");
+        fprintf(stderr, "Erro: falha ao ler entrada\n");
         return 1;
     }
 
-    if (sscanf(line, "%lf %c %lf %n", a, op, b, &pos) != 3) 
+    if (sscanf(linha, "%lf %c %lf %n", valor_a, operador, valor_b, &posicao) != 3) 
     {
-        fprintf(stderr, "Error: invalid format. Expected: number operator number\n");
+        fprintf(stderr, "Erro: formato inválido. Esperado: número operador número\n");
         return 1;
     }
 
-    while (line[pos] != '\0' && isspace((unsigned char)line[pos])) 
+    while (linha[posicao] != '\0' && isspace((unsigned char)linha[posicao])) 
     {
-        pos++;
+        posicao++;
     }
 
-    if (line[pos] != '\0') 
+    if (linha[posicao] != '\0') 
     {
-        fprintf(stderr, "Error: extra characters after input\n");
+        fprintf(stderr, "Erro: caracteres extras após a entrada\n");
         return 1;
     }
 
