@@ -8,11 +8,13 @@ int main(void)
     double valor_a, valor_b, resultado;
     char operador;
     
+    // Lê a entrada e verifica se houve erro na leitura
     if (ler_entrada(&valor_a, &valor_b, &operador) != 0) 
     {
         return EXIT_FAILURE;
     }
 
+    // calcular retorna 0 se sucesso, 1 para divisão por zero, 2 para operador inválido
     int erro = calcular(valor_a, valor_b, operador, &resultado);
     if (erro == 1) 
     {
