@@ -1,32 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "input.h"
-#include "arithmetic.h"
+#include "entrada.h"
+#include "aritmetica.h"
 
 int main(void)
 {
-    double a, b, result;
-    char op;
+    double valor_a, valor_b, resultado;
+    char operador;
     
-    if (read_input(&a, &b, &op) != 0) 
+    if (ler_entrada(&valor_a, &valor_b, &operador) != 0) 
     {
         return EXIT_FAILURE;
     }
 
-    int err = compute(a, b, op, &result);
-    if (err == 1) 
+    int erro = calcular(valor_a, valor_b, operador, &resultado);
+    if (erro == 1) 
     {
-        fprintf(stderr, "Error: division by zero\n");
+        fprintf(stderr, "Erro: divisão por zero\n");
         return EXIT_FAILURE;
     }
 
-    else if (err == 2) 
+    else if (erro == 2) 
     {
-        fprintf(stderr, "Error: invalid operator (use +, -, *, /)\n");
+        fprintf(stderr, "Erro: operador inválido (use +, -, *, /)\n");
         return EXIT_FAILURE;
     }
 
-    printf("%g %c %g = %g\n", a, op, b, result);
+    printf("%g %c %g = %g\n", valor_a, operador, valor_b, resultado);
     
     return EXIT_SUCCESS;
 }
