@@ -26,7 +26,7 @@ int main(void)
         return EXIT_FAILURE;
     }
 
-    printf("%.2f %c %.2f = %.2f\n", a, op, b, result);
+    printf("%g %c %g = %g\n", a, op, b, result);
     
     return EXIT_SUCCESS;
 }
